@@ -36,24 +36,19 @@ using namespace std;
 class Solution {
     public:
         string getHappyString(int n, int k) {
-            set < string > st; 
+            vector < string > st; 
             opr(0 , n , '~' , st, ""); 
             int pick = 0; 
             string ans = ""; 
-            for(auto & itr : st){
-                pick++;
-                if(pick == k){
-                    ans = itr;
-                    break;
-                }
+            if(st.size() >= (k)){
+                ans = st[k-1]; 
             }
             return ans; 
         }
     
-        void opr(int index , int n , char c , set < string > &st , string curr){
-    
+        void opr(int index , int n , char c , vector < string > &st , string curr){
             if(index == n) {
-                st.insert(curr); 
+                st.push_back(curr); 
                 return ; 
             }
             for(char ch = 'a' ; ch <= 'c' ; ch++){
