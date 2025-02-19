@@ -37,7 +37,7 @@ class Solution {
     public:
         string getHappyString(int n, int k) {
             vector < string > st; 
-            opr(0 , n , st, ""); 
+            opr(0 , n , st, "" , k); 
             int pick = 0; 
             string ans = ""; 
             if(st.size() >= (k)){
@@ -46,14 +46,15 @@ class Solution {
             return ans; 
         }
     
-        void opr(int index , int n , vector < string > &st , string curr){
+        void opr(int index , int n , vector < string > &st , string curr , int k){
+            if(st.size() == k) return ; 
             if(index == n) {
                 st.push_back(curr); 
                 return ; 
             }
             for(char ch = 'a' ; ch <= 'c' ; ch++){
                 if(index > 0 && curr[index-1] == ch) continue; 
-                opr(index + 1 , n , st , curr + ch); 
+                opr(index + 1 , n , st , curr + ch , k); 
                 
             }
         }
